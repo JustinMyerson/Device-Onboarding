@@ -1,4 +1,6 @@
 from device import *
+from inputHandler import *
+
 class mockDatabaseRepo:
     def __init__(self):
         self.listOfDevices = []
@@ -6,8 +8,9 @@ class mockDatabaseRepo:
     def getSizeOfListOfDevices(self):
         return len(self.listOfDevices)
 
-    def appendToDeviceList(self, deviceTest):
-        self.listOfDevices.append(deviceTest)
+    def appendToDeviceList(self, deviceToAdd):
+        # deviceToAdd = device(inputHandler.returnInput())
+        self.listOfDevices.append(deviceToAdd)
     
     def getDeviceBySerial(self, serialNumber):
         for device in self.listOfDevices:

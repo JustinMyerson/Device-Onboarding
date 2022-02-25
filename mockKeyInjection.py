@@ -3,7 +3,7 @@ class mockKeyInjection:
         self.key = key
 
     def injectKey(self, key) -> bool:
-        pass
+        return False
 
 class keyInjector(mockKeyInjection):
     def injectKey(self, key) -> bool:

@@ -1,6 +1,6 @@
 class mockFlashDevice:
     def flashDevice(self) -> bool:
-        pass
+        return False
 
 class keyInjector(mockFlashDevice):
     def flashDevice(self) -> bool:
