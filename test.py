@@ -10,12 +10,14 @@ class test(unittest.TestCase):
     
     def testSimCardInfo(self):
         self.assertEquals(deviceTest.simcard.IMSI, 3, "Device sim card information not stored correctly")
+    
+    def testWarehouseInfo(self):
+        self.assertEquals(deviceTest.warehouse.warehouseNumber, 1, "Warehouse information not stored correctly")
 
     def testDeviceWrittenToMockDatabaseRepo(self):
         mockDB = mockDatabaseRepo()
         mockDB.appendToDeviceList(deviceTest)
         self.assertEquals(mockDB.getSizeOfListOfDevices(), 1, "Device not added to database")
-
 
     def testFindDeviceBySerialNumber(self):
         mockSerial = 123
