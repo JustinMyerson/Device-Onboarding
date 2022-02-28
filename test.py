@@ -55,12 +55,6 @@ class test(unittest.TestCase):
     def testFlashDevice(self):
         mockFlash = mockFlashDevice()
         flashDevice(mockFlash)
-        print(flashDevice)
-    
-    # def testInjectKey(self):
-    #     mockKey = mockKeyInjection()
-    #     keyInject = keyInjector(deviceTest)
-    #     keyInject.injectKey(mockKey)
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")

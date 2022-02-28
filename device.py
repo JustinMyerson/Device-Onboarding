@@ -3,6 +3,7 @@ from inputHandler import *
 from simCardInfo import *
 from warehouseInfo import *
 from inputHandler import *
+from mockKeyInjection import *
 
 class device:
     def __init__(self, serialNumber, boxNumber, crateNumber, isDamaged, flashed, keyInjected, sendForRepacking, IMEI):
@@ -40,6 +41,9 @@ class device:
     def setWarehouseInfo(self, warehouseNumber, sectionNumber, rowNumber, shelfNumber, segmentNumber, segment):
         self.warehouse = warehouseInfo(warehouseNumber, sectionNumber, rowNumber, shelfNumber, segmentNumber, segment)
         self.setDeviceState("STORED_IN_WAREHOUSE")
+    
+    def injectKey(self):
+        self.keyInjector(12345).injectKey(12345)
 
 deviceTest = device(123, 1, 2, False, False, False, False, 8181)
 deviceTest.setSimCardInfo(1,3)

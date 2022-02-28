@@ -9,9 +9,9 @@ class keyInjector(mockKeyInjection):
     def __init__(self, key):
         self.key = key
 
-    def injectKey(self, device):
+    def injectKey(self, key):
         try:
-            self.device.injectKey(985241)
+            self.injectKey(key)
             return True
         except:
             raise InjectionFaliureException
