@@ -22,17 +22,13 @@ class mockDatabaseRepo:
                 return device
 
     def checkIfFlashed(self, IMEINumber):
-        for device in self.listOfDevices:
-            if device.returnIMEI() == IMEINumber:
-                if device.returnFlashed():
-                    return True
-                else:
-                    return False
+        dev = self.getDeviceByIMEI(IMEINumber)
+        if dev.returnFlashed():
+            return True
+        return False
     
     def checkIfKeyInjected(self, IMEINumber):
-        for device in self.listOfDevices:
-            if device.returnIMEI() == IMEINumber:
-                if device.returnKeyInjected():
-                    return True
-                else:
-                    return False
+        dev = self.getDeviceByIMEI(IMEINumber)
+        if dev.returnKeyInjected():
+            return True
+        return False
