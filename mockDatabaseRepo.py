@@ -21,4 +21,3 @@ class mockDatabaseRepo:
         for device in self.listOfDevices:
             if device.returnIMEI() == IMEINumber:
                 return device
-

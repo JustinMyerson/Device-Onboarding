@@ -1,5 +1,7 @@
+from inputHandler import inputHandler
 from simCardInfo import *
 from warehouseInfo import *
+from inputHandler import *
 
 class device:
     def __init__(self, serialNumber, boxNumber, crateNumber, isDamaged, flashed, keyInjected, sendForRepacking, IMEI, deviceState):
@@ -26,6 +28,6 @@ class device:
         self.warehouse = warehouseInfo(warehouseNumber, sectionNumber, rowNumber, shelfNumber, segmentNumber, segment)
 
 deviceTest = device(123, 1, 2, False, 3, False, False, 8181, 1)
-deviceTest.setSimCardInfo(1, 3)
+deviceTest.setSimCardInfo(1,3)
 deviceTest.setWarehouseInfo(1, 2, 3, 4, 5, 1)
 
