@@ -2,15 +2,15 @@ from device import *
 from errors import *
 
 class mockFlashDevice:
-    def flashDevice(self) -> bool:
+    def flashDevice(self):
         pass
 
-class keyInjector(mockFlashDevice):
-    def __init__(self, device: device):
-        self.device = device
+class flashDevice(mockFlashDevice):
+    def __init__(self, device):
+        self._device = device
 
-    def flashDevice(self) -> bool:
+    def flashDevice(self):
         try:
-            self.device.flashDevice()
+            device.flashed = True
         except:
             raise FlashFaliureException

@@ -2,11 +2,11 @@ import unittest
 from device import *
 from mockDatabaseRepo import *
 from inputHandler import *
+from mockFlashDevice import flashDevice, mockFlashDevice
 from mockKeyInjection import *
 
 class test(unittest.TestCase):
-    mockDB = mockDatabaseRepo()
-    mockDB.appendToDeviceList(deviceTest)
+   
 
     def testDevice(self):
         self.assertEquals(deviceTest.serialNumber, 123)
@@ -19,11 +19,14 @@ class test(unittest.TestCase):
     def testWarehouseInfo(self):
         self.assertEquals(deviceTest.warehouse.warehouseNumber, 1, "Warehouse information not stored correctly")
 
-    def testDeviceWrittenToMockDatabaseRepo(self):
+    def testDeviceWrittenToMockDatabaseRepo(self):     
         mockDB = mockDatabaseRepo()
-        mockDB.appendToDeviceList(inputHandler.userInput)
         mockDB.appendToDeviceList(deviceTest)
+        mockDB.appendToDeviceList(inputHandler.userInput)
         self.assertEquals(mockDB.getSizeOfListOfDevices(), 2, "Device not added to database")
+    
+    def testDeviceStateUpdated(self):
+        self.assertEquals(deviceTest.getDeviceState(), "STORED_IN_WAREHOUSE")
 
     def testFindDeviceBySerialNumber(self):
         mockSerial = 123
@@ -49,15 +52,15 @@ class test(unittest.TestCase):
         mockDB.appendToDeviceList(deviceTest)
         self.assertEquals(mockDB.checkIfKeyInjected(mockIMEI), False)
     
+    def testFlashDevice(self):
+        mockFlash = mockFlashDevice()
+        flashDevice(mockFlash)
+        print(flashDevice)
+    
     # def testInjectKey(self):
-    #     mockDB = mockDatabaseRepo()
-    #     mockDB.appendToDeviceList(deviceTest)
     #     mockKey = mockKeyInjection()
     #     keyInject = keyInjector(deviceTest)
     #     keyInject.injectKey(mockKey)
-    
-    def testReturnDeviceState(self):
-        self.assertEquals(deviceTest.deviceState, 1, "Device state is not stored correctly")
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
