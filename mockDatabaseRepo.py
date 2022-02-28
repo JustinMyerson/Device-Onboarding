@@ -20,3 +20,11 @@ class mockDatabaseRepo:
         for device in self.listOfDevices:
             if device.returnIMEI() == IMEINumber:
                 return device
+
+    def checkIfFlashed(self, IMEINumber):
+        for device in self.listOfDevices:
+            if device.returnIMEI() == IMEINumber:
+                if device.returnFlashed():
+                    return True
+                else:
+                    return False

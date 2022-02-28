@@ -33,6 +33,12 @@ class test(unittest.TestCase):
         mockDB.appendToDeviceList(deviceTest)
         self.assertEquals(mockDB.getDeviceByIMEI(mockIMEI).returnIMEI(), 8181, "Device cannot be found with IMEI number {}".format(mockIMEI))
 
+    def testCheckDeviceFlashed(self):
+        mockIMEI = 8181
+        mockDB = mockDatabaseRepo()
+        mockDB.appendToDeviceList(deviceTest)
+        self.assertEquals(mockDB.checkIfFlashed(mockIMEI), False)
+
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
     unittest.main()

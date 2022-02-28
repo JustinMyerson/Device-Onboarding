@@ -15,6 +15,12 @@ class device:
         self.IMEI = IMEI
         self.deviceState = deviceState
     
+    def returnFlashed(self):
+        return self.flashed
+
+    def returnKeyInjected(self):
+        return self.keyInjected
+
     def returnSerialNumber(self):
         return self.serialNumber
     
