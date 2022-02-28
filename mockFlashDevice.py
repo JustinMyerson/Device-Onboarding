@@ -1,8 +1,9 @@
 from device import *
+from errors import *
 
 class mockFlashDevice:
     def flashDevice(self) -> bool:
-        return False
+        pass
 
 class keyInjector(mockFlashDevice):
     def __init__(self, device: device):
@@ -12,4 +13,4 @@ class keyInjector(mockFlashDevice):
         try:
             self.device.flashDevice()
         except:
-            raise "Could not flash device"
+            raise FlashFaliureException

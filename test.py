@@ -2,6 +2,7 @@ import unittest
 from device import *
 from mockDatabaseRepo import *
 from inputHandler import *
+from mockKeyInjection import *
 
 class test(unittest.TestCase):
     def testDevice(self):
@@ -44,6 +45,13 @@ class test(unittest.TestCase):
         mockDB = mockDatabaseRepo()
         mockDB.appendToDeviceList(deviceTest)
         self.assertEquals(mockDB.checkIfKeyInjected(mockIMEI), False)
+    
+    def testInjectKey(self):
+        mockDB = mockDatabaseRepo()
+        mockDB.appendToDeviceList(deviceTest)
+        mockKey = mockKeyInjection()
+        keyInject = keyInjector(deviceTest)
+        keyInject.injectKey(mockKey)
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")

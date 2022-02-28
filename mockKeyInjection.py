@@ -1,19 +1,18 @@
 from device import *
+from errors import *
 
 class mockKeyInjection:
-    def __init__(self, key):
-        self.key = key
-
-    def injectKey(self, key) -> bool:
-        return False
+    def injectKey(self):
+        pass
 
 class keyInjector(mockKeyInjection):
-    def __init__(self, device: device):
+    def __init__(self, device):
         self.device = device
 
-    def injectKey(self, key: list) -> bool:
+    def injectKey(self, key):
         try:
             self.device.injectKey(key)
+            return True
         except:
-            raise "Key not injected correctly"
+            raise InjectionFaliureException
 
