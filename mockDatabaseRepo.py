@@ -28,3 +28,11 @@ class mockDatabaseRepo:
                     return True
                 else:
                     return False
+    
+    def checkIfKeyInjected(self, IMEINumber):
+        for device in self.listOfDevices:
+            if device.returnIMEI() == IMEINumber:
+                if device.returnKeyInjected():
+                    return True
+                else:
+                    return False

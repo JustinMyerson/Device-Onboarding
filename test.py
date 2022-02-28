@@ -37,7 +37,13 @@ class test(unittest.TestCase):
         mockIMEI = 8181
         mockDB = mockDatabaseRepo()
         mockDB.appendToDeviceList(deviceTest)
-        self.assertEquals(mockDB.checkIfFlashed(mockIMEI), False)
+        self.assertEquals(mockDB.checkIfFlashed(mockIMEI), True)
+    
+    def testCheckDeviceKeyInjected(self):
+        mockIMEI = 8181
+        mockDB = mockDatabaseRepo()
+        mockDB.appendToDeviceList(deviceTest)
+        self.assertEquals(mockDB.checkIfKeyInjected(mockIMEI), False)
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
