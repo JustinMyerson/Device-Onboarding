@@ -1,3 +1,4 @@
+from doctest import testmod
 import unittest
 from device import *
 from mockDatabaseRepo import *
@@ -55,6 +56,12 @@ class test(unittest.TestCase):
     def testFlashDevice(self):
         mockFlash = mockFlashDevice()
         flashDevice(mockFlash)
+
+    def testUpdateFlashedAndUpdateKeys(self):
+        deviceTest.updateFlashed()
+        deviceTest.updateKeys(12345)
+        self.assertTrue(deviceTest.returnFlashed, "Device has not updated the flashed property")
+        self.assertEquals(deviceTest.keyInjected, 12345, "Key not added correctly")
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")

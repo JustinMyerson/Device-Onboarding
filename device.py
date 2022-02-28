@@ -42,8 +42,14 @@ class device:
         self.warehouse = warehouseInfo(warehouseNumber, sectionNumber, rowNumber, shelfNumber, segmentNumber, segment)
         self.setDeviceState("STORED_IN_WAREHOUSE")
     
-    def injectKey(self):
-        self.keyInjector(12345).injectKey(12345)
+    def updateKeys(self, key):
+        self.keyInjected = key
+    
+    def updateFlashed(self):
+        self.flashed = True
+    
+    # def injectKey(self):
+    #     self.keyInjector(mockKeyInjection).injectKey(12345)
 
 deviceTest = device(123, 1, 2, False, False, False, False, 8181)
 deviceTest.setSimCardInfo(1,3)
