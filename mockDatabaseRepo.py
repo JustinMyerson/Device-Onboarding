@@ -9,7 +9,6 @@ class mockDatabaseRepo:
         return len(self.listOfDevices)
 
     def appendToDeviceList(self, deviceToAdd):
-        # deviceToAdd = device(inputHandler.returnInput())
         self.listOfDevices.append(deviceToAdd)
     
     def getDeviceBySerial(self, serialNumber):

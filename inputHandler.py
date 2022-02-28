@@ -1,14 +1,21 @@
 class inputHandler:
-    def __init__(self):
-        self.serialNumber = input("Enter device serial number: ")
-        self.boxNumber = input("Enter device box number: ")
-        self.crateNumber = input("Enter device crate number: ")
-        self.damaged = input("Enter damage from 1-5: ")
-        self.snn = input("Enter snn number: ")
-        self.imsi = input("Enter imsi number: ")
-        self.flashed = input("Is device flashed (True/False): ")
-        self.keyInjected = input("Is device key injected (True/False): ")
-        self.sendForRepacking = input("Device needs to be repacked (True/False): ")
+    def __init__(self, serialNumber, boxNumber, crateNumber, damaged, snn, imsi, flashed, keyInjected, sendForRepacking, IMEI, deviceState):
+        self.serialNumber = serialNumber
+        self.boxNumber = boxNumber
+        self.crateNumber = crateNumber
+        self.damaged = damaged
+        self.snn = snn
+        self.imsi = imsi
+        self.flashed = flashed
+        self.keyInjected = keyInjected
+        self.sendForRepacking = sendForRepacking
+        self.IMEI = IMEI
+        self.deviceState = deviceState
+
+    def getInput():
+        return input("Enter device serial number: "), input("Enter device box number: "), input("Enter damage from 1-5: "), input("Enter snn number: "), input("Enter imsi number: "), input("Is device flashed (True/False): "), input("Is device key injected (True/False): "), input("Device needs to be repacked (True/False): "), input("Enter IMEI number: "), input("Enter device state: ")
+
+    userInput = getInput()
 
     def returnInput(self):
-        return self.serialNumber, self.boxNumber, self.crateNumber, self.damaged, self.snn, self.imsi, self.flashed, self.keyInjected, self.sendForRepacking
+        return self.serialNumber, self.boxNumber, self.crateNumber, self.damaged, self.flashed, self.keyInjected, self.sendForRepacking, self.IMEI

@@ -1,4 +1,4 @@
-from inputHandler import inputHandler
+from inputHandler import *
 from simCardInfo import *
 from warehouseInfo import *
 from inputHandler import *
