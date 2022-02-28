@@ -5,6 +5,9 @@ from inputHandler import *
 from mockKeyInjection import *
 
 class test(unittest.TestCase):
+    mockDB = mockDatabaseRepo()
+    mockDB.appendToDeviceList(deviceTest)
+
     def testDevice(self):
         self.assertEquals(deviceTest.serialNumber, 123)
         self.assertEquals(deviceTest.boxNumber, 1)
@@ -38,7 +41,7 @@ class test(unittest.TestCase):
         mockIMEI = 8181
         mockDB = mockDatabaseRepo()
         mockDB.appendToDeviceList(deviceTest)
-        self.assertEquals(mockDB.checkIfFlashed(mockIMEI), True)
+        self.assertEquals(mockDB.checkIfFlashed(mockIMEI), False)
     
     def testCheckDeviceKeyInjected(self):
         mockIMEI = 8181
@@ -46,12 +49,15 @@ class test(unittest.TestCase):
         mockDB.appendToDeviceList(deviceTest)
         self.assertEquals(mockDB.checkIfKeyInjected(mockIMEI), False)
     
-    def testInjectKey(self):
-        mockDB = mockDatabaseRepo()
-        mockDB.appendToDeviceList(deviceTest)
-        mockKey = mockKeyInjection()
-        keyInject = keyInjector(deviceTest)
-        keyInject.injectKey(mockKey)
+    # def testInjectKey(self):
+    #     mockDB = mockDatabaseRepo()
+    #     mockDB.appendToDeviceList(deviceTest)
+    #     mockKey = mockKeyInjection()
+    #     keyInject = keyInjector(deviceTest)
+    #     keyInject.injectKey(mockKey)
+    
+    def testReturnDeviceState(self):
+        self.assertEquals(deviceTest.deviceState, 1, "Device state is not stored correctly")
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
