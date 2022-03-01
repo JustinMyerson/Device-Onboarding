@@ -5,6 +5,7 @@ from mockDatabaseRepo import *
 from inputHandler import *
 from mockFlashDevice import flashDevice, mockFlashDevice
 from mockKeyInjection import *
+from deviceState import *
 
 class test(unittest.TestCase):
     def testDevice(self):
@@ -67,4 +68,10 @@ class test(unittest.TestCase):
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
+    print("Please choose device state to start with from the following options:")
+    count = 0
+    for d in deviceState:
+        print("{} - {}".format(count, d.name))
+        count += 1
+    
     unittest.main()
