@@ -5,6 +5,7 @@ from warehouseInfo import *
 from inputHandler import *
 from mockKeyInjection import *
 from damageRating import *
+from mockDatabaseRepo import *
 
 class device:
     def __init__(self, serialNumber, boxNumber, crateNumber, damageRating, flashed, keyInjected, sendForRepacking, IMEI):
@@ -42,7 +43,6 @@ class device:
             self.keyInjected = None
             self.sendForRepacking = None
             self.IMEI = None
-            print("Device is damaged and will not be usable")
 
     def setSimCardInfo(self, SNN, IMSI):
         self.simcard = simCardInfo(SNN, IMSI)
@@ -57,6 +57,24 @@ class device:
     
     def updateFlashed(self):
         self.flashed = True
+    
+    def modifyDevice(self):
+        userDeviceIMEI = input("Please enter device IMEI: ")
+        mockDB = mockDatabaseRepo()
+        userDevice = mockDB.getDeviceByIMEI(userDeviceIMEI)
+        print("Device is currently in {} state".format(userDevice.getDeviceState()))
+    
+    def startProgram():
+        mockDB = mockDatabaseRepo()
+        inputNewDevice = input("Would you like to register a new device? Y/N: ")
+        if inputNewDevice == "Y":
+            newDevice = device(input("Enter device serial number: "), input("Enter device box number: "), input("Enter damage from 1-5: "), input("Enter imsi number: "), input("Is device flashed (True/False): "), input("Is device key injected (True/False): "), input("Device needs to be repacked (True/False): "), input("Enter IMEI number: "))
+            mockDB.appendToDeviceList(newDevice)
+        else:
+            userDeviceIMEI = input("Please enter device IMEI: ")
+            userDevice = mockDB.getDeviceByIMEI(userDeviceIMEI)
+            print(type(userDevice))
+            print(userDevice.returnSerialNumber())
 
 deviceDamageTest = device(123, 1, 2, 5, False, False, False, 8181)
 deviceDamageTest.setDamaged()

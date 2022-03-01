@@ -1,5 +1,6 @@
 from doctest import testmod
 import unittest
+from unittest import mock
 from device import *
 from mockDatabaseRepo import *
 from inputHandler import *
@@ -67,5 +68,6 @@ class test(unittest.TestCase):
         self.assertEqual(deviceDamageTest.returnIMEI(), None, "Device damage is not recorded correctly")  
 
 if __name__ == '__main__':
+    device.startProgram()
     unittest.main()
     
