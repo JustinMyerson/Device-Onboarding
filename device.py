@@ -4,13 +4,14 @@ from simCardInfo import *
 from warehouseInfo import *
 from inputHandler import *
 from mockKeyInjection import *
+from damageRating import *
 
 class device:
-    def __init__(self, serialNumber, boxNumber, crateNumber, isDamaged, flashed, keyInjected, sendForRepacking, IMEI):
+    def __init__(self, serialNumber, boxNumber, crateNumber, damageRating, flashed, keyInjected, sendForRepacking, IMEI):
         self.serialNumber = serialNumber
         self.boxNumber = boxNumber
         self.crateNumber = crateNumber
-        self.isDamaged = isDamaged
+        self.damageRating = damageRating
         self.flashed = flashed
         self.keyInjected = keyInjected
         self.sendForRepacking = sendForRepacking
@@ -34,6 +35,15 @@ class device:
     def returnIMEI(self):
         return self.IMEI
     
+    def setDamaged(self):
+        if self.damageRating > 0:
+            self.setDeviceState("DAMAGE_RECORDED")
+            self.flashed = False
+            self.keyInjected = False
+            self.sendForRepacking = False
+            self.IMEI = 0
+            print("Device is damaged and will not be usable")
+
     def setSimCardInfo(self, SNN, IMSI):
         self.simcard = simCardInfo(SNN, IMSI)
         self.setDeviceState("SIM_INSERTED_AND_RECORDED")
@@ -47,11 +57,10 @@ class device:
     
     def updateFlashed(self):
         self.flashed = True
-    
-    # def injectKey(self):
-    #     self.keyInjector(mockKeyInjection).injectKey(12345)
 
-deviceTest = device(123, 1, 2, False, False, False, False, 8181)
+deviceDamageTest = device(123, 1, 2, 5, False, False, False, 8181)
+deviceDamageTest.setDamaged()
+
+deviceTest = device(123, 1, 2, 0, False, False, False, 8181)
 deviceTest.setSimCardInfo(1,3)
 deviceTest.setWarehouseInfo(1, 2, 3, 4, 5, 1)
-

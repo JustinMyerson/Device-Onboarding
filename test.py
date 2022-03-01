@@ -7,8 +7,6 @@ from mockFlashDevice import flashDevice, mockFlashDevice
 from mockKeyInjection import *
 
 class test(unittest.TestCase):
-   
-
     def testDevice(self):
         self.assertEquals(deviceTest.serialNumber, 123)
         self.assertEquals(deviceTest.boxNumber, 1)
@@ -62,6 +60,10 @@ class test(unittest.TestCase):
         deviceTest.updateKeys(12345)
         self.assertTrue(deviceTest.returnFlashed, "Device has not updated the flashed property")
         self.assertEquals(deviceTest.keyInjected, 12345, "Key not added correctly")
+    
+    def testDeviceDamaged(self):
+        self.assertEquals(deviceDamageTest.getDeviceState(), "DAMAGE_RECORDED", "Device damage is not recorded correctly")
+        self.assertEquals(deviceDamageTest.returnIMEI(), 0, "Device damage is not recorded correctly")
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")

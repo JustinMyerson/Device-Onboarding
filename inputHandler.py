@@ -12,7 +12,7 @@ class inputHandler:
         self.sendForRepacking = sendForRepacking
 
     def getInput():
-        return input("Enter device serial number: "), input("Enter device box number: "), input("Enter damage from 1-5: "), input("Enter snn number: "), input("Enter imsi number: "), input("Is device flashed (True/False): "), input("Is device key injected (True/False): "), input("Device needs to be repacked (True/False): "), input("Enter IMEI number: "), input("Enter device state: ")
+        return input("Enter device serial number: "), input("Enter device box number: "), input("Enter damage from 1-5: "), input("Enter snn number: "), input("Enter imsi number: "), input("Is device flashed (True/False): "), input("Is device key injected (True/False): "), input("Device needs to be repacked (True/False): "), input("Enter IMEI number: ")
 
     userInput = getInput()
 
