@@ -38,10 +38,10 @@ class device:
     def setDamaged(self):
         if self.damageRating > 0:
             self.setDeviceState("DAMAGE_RECORDED")
-            self.flashed = False
-            self.keyInjected = False
-            self.sendForRepacking = False
-            self.IMEI = 0
+            self.flashed = None
+            self.keyInjected = None
+            self.sendForRepacking = None
+            self.IMEI = None
             print("Device is damaged and will not be usable")
 
     def setSimCardInfo(self, SNN, IMSI):

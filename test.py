@@ -63,7 +63,7 @@ class test(unittest.TestCase):
     
     def testDeviceDamaged(self):
         self.assertEquals(deviceDamageTest.getDeviceState(), "DAMAGE_RECORDED", "Device damage is not recorded correctly")
-        self.assertEquals(deviceDamageTest.returnIMEI(), 0, "Device damage is not recorded correctly")
+        self.assertEquals(deviceDamageTest.returnIMEI(), None, "Device damage is not recorded correctly")
 
 if __name__ == '__main__':
     print("Welcome / Welkom / Shalom")
