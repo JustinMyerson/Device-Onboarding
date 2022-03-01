@@ -3,3 +3,6 @@ class InjectionFaliureException(Exception):
 
 class FlashFaliureException(Exception):
     pass
+
+class DeviceDamagedException(Exception):
+    pass

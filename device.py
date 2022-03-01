@@ -57,9 +57,6 @@ class device:
     
     def updateFlashed(self):
         self.flashed = True
-    
-    def setStartState(self):
-        self.setDeviceState(input("Choose device state you would like to start with"))
 
 deviceDamageTest = device(123, 1, 2, 5, False, False, False, 8181)
 deviceDamageTest.setDamaged()
