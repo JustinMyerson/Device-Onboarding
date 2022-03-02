@@ -18,6 +18,38 @@ class device:
         self.sendForRepacking = sendForRepacking
         self.IMEI = IMEI
     
+    def __init__(self, serialNumber, IMEI):
+        self.serialNumber = serialNumber
+        self.IMEI = IMEI
+        self.state = deviceState.IMEI_RECORDED
+    
+    def setIMEI(self, IMEI):
+        self.IMEI = IMEI
+        self.state = deviceState.IMEI_RECORDED
+    
+    def returnIMEI(self):
+        return self.IMEI
+    
+    def setSerialNumber(self, serialNumber):
+        self.serialNumber = serialNumber
+        self.state = deviceState.SERIAL_NUMBER_RECORDED
+    
+    def returnSerialNumber(self):
+        return self.serialNumber
+    
+    def set_package_info(self, boxNumber, crateNumber):
+        self.boxNumber = boxNumber
+        self.crateNumber = crateNumber
+        self._state = deviceState.STORED_IN_WAREHOUSE
+    
+    def setDamaged(self, damageRating):
+        if self.damageRating > 0:
+            self.setDeviceState("DAMAGE_RECORDED")
+            self.flashed = None
+            self.keyInjected = None
+            self.sendForRepacking = None
+            self.IMEI = None
+
     def returnFlashed(self):
         return self.flashed
 
@@ -32,17 +64,6 @@ class device:
 
     def setDeviceState(self, state):
         self.deviceState = state
-    
-    def returnIMEI(self):
-        return self.IMEI
-    
-    def setDamaged(self):
-        if self.damageRating > 0:
-            self.setDeviceState("DAMAGE_RECORDED")
-            self.flashed = None
-            self.keyInjected = None
-            self.sendForRepacking = None
-            self.IMEI = None
 
     def setSimCardInfo(self, SNN, IMSI):
         self.simcard = simCardInfo(SNN, IMSI)

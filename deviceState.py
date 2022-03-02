@@ -10,3 +10,4 @@ class deviceState(enum.Enum):
     KEY_INJECTED = 7
     SENT_FOR_REPACK = 8
     STORED_IN_WAREHOUSE = 9
+    IMEI_RECORDED = 10
