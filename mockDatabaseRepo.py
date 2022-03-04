@@ -1,4 +1,4 @@
-from device import *
+from device import Device
 from inputHandler import *
 
 class mockDatabaseRepo:
@@ -7,6 +7,9 @@ class mockDatabaseRepo:
     
     def getSizeOfListOfDevices(self):
         return len(self.listOfDevices)
+    
+    def create_device(self, serialNumber, IMEI):
+        self.listOfDevices.append(Device(serialNumber, IMEI))
 
     def appendToDeviceList(self, deviceToAdd):
         self.listOfDevices.append(deviceToAdd)

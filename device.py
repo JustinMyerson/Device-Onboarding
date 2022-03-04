@@ -8,15 +8,6 @@ from damageRating import *
 from mockDatabaseRepo import *
 
 class device:
-    def __init__(self, serialNumber, boxNumber, crateNumber, damageRating, flashed, keyInjected, sendForRepacking, IMEI):
-        self.serialNumber = serialNumber
-        self.boxNumber = boxNumber
-        self.crateNumber = crateNumber
-        self.damageRating = damageRating
-        self.flashed = flashed
-        self.keyInjected = keyInjected
-        self.sendForRepacking = sendForRepacking
-        self.IMEI = IMEI
     
     def __init__(self, serialNumber, IMEI):
         self.serialNumber = serialNumber
@@ -42,8 +33,10 @@ class device:
         self.crateNumber = crateNumber
         self._state = deviceState.STORED_IN_WAREHOUSE
     
+    # If a device is damaged then all other values get set to none
     def setDamaged(self, damageRating):
         if self.damageRating > 0:
+            self.damageRating = damageRating
             self.setDeviceState("DAMAGE_RECORDED")
             self.flashed = None
             self.keyInjected = None
@@ -55,9 +48,6 @@ class device:
 
     def returnKeyInjected(self):
         return self.keyInjected
-
-    def returnSerialNumber(self):
-        return self.serialNumber
     
     def getDeviceState(self):
         return self.deviceState
